@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Time;
 import java.util.Random;
 
 public class GameField extends JPanel implements ActionListener {
@@ -24,6 +25,8 @@ public class GameField extends JPanel implements ActionListener {
     private boolean up;
     private boolean down;
     private boolean inGame = true;
+
+    private Time game;
 
     public GameField() {
         setBackground(Color.BLACK);
@@ -64,9 +67,9 @@ public class GameField extends JPanel implements ActionListener {
 
         if (inGame) {
             g.drawImage(apple, appleX, appleY, this);
-
             for (int i = 0; i < dots; i++) {
                 g.drawImage(dot, x[i], y[i], this);
+                g.drawString(String.valueOf(timer.getDelay()), 10 ,10);
             }
         } else {
             String str = "GAME OVER";
